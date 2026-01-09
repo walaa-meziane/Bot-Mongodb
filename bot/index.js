@@ -11,15 +11,15 @@ bot.onText(/\/add_balance\s+(\d+)\s+(\d+)/,async (msg,match)=>{
     let amount = parseInt(match[1])
     let id = match[2]
 
-    let user = await db.Users.findOne({
+    let user = await users.findOne({
         where:{
             telegramID:msg.from.id
         },
         include: [{
-            model: db.Roles
+            model: roles
         }]
     })
-//SELECT * FROM users u WHER u.id = msg.from.id JOIN Roles r ON r.id = u.roleId;
+//SELECT * FROM users u WHER u.id = msg.from.id JOIN roles r ON r.id = u.roleId;
 
     if(user.role.name == 'admin'){
         // console.log('admin is allowed')

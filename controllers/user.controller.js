@@ -18,7 +18,6 @@ exports.balance = async (bot,msg)=>{
 }
 
 exports.addBalance_admin = async (amount,user_id)=>{
-    // console.log('calling the controller addBalance_admin')
     await userService.addCoin(parseInt(user_id),amount);
 }
 
